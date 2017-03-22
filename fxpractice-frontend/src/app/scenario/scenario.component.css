@@ -1,0 +1,95 @@
+.scenario-window {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+}
+
+#chart-container {
+  position: relative;
+  height: 90%;
+  width: 100%;
+}
+
+#main-chart {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#main-chart:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index:100;
+}
+
+#current-pl-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+#current-pl {
+  padding: 20px;
+  opacity: .6;
+  background-color: red;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#current-pl.negative {
+  background-color: #c9302c;
+}
+
+#current-pl.positive {
+  background-color: #449d44;
+}
+
+#status-panel {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(0, 0, 0, .15);
+  padding: 10px;
+  z-index: 100;
+}
+
+#realized-pips {
+  font-weight: 600;
+}
+
+#debug-panel {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(100, 0, 0, .15);
+  padding: 10px;
+  z-index: 100;
+}
+
+#order-buttons-container {
+  height: 10%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.order-button {
+  height: 95%;
+  width: 49%;
+}

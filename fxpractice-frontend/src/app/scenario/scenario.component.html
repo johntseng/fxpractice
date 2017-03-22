@@ -1,0 +1,63 @@
+<div class="scenario-window">
+  <div id="chart-container">
+    <div id="status-panel">
+      <h5>{{title}}</h5>
+      <div>
+        {{currentSimulationTime | date: 'EEE MMM d, y hh:mm:ss a'}}
+      </div>
+      <div>
+        <label>P/L</label>
+        <span>
+          Total:
+          <span id="realized-pips" class="{{getClassForNumber(realizedPips)}}">
+            {{realizedPips | number: '1.1-1'}}
+          </span>
+        </span>
+        <span style="margin-left: 10px;">
+          Average:
+          <span class="{{getClassForNumber(averagePl)}}">
+            {{averagePl | number: '1.1-1'}}
+          </span>
+        </span>
+      </div>
+    </div>
+    <div id="debug-panel" *ngIf="showDebugPanel">
+      <div>
+        <label>wall tick</label>
+        {{currentWallTickTime}}
+      </div>
+      <div *ngIf="currentTick">
+        <label>bid</label>
+        {{currentTick.bid}}
+      </div>
+      <div *ngIf="currentTick">
+        <label>ask</label>
+        {{currentTick.ask}}
+      </div>
+      <div *ngIf="currentPosition">
+        {{currentPosition.direction}} {{currentPosition.entryPrice}}
+      </div>
+    </div>
+    <app-fx-chart id="main-chart" #chart
+                  *ngIf="scenario" [scenario]="scenario"></app-fx-chart>
+    <div id="current-pl-container" *ngIf="currentPosition">
+      <div id="current-pl"
+           class="{{currentPlPips > 0 ? 'positive' : currentPlPips < 0 ? 'negative' : ''}}">
+        {{currentPlPips > 0 ? '+' : ''}}
+        {{currentPlPips | number: '1.1-1'}}
+      </div>
+    </div>
+  </div>
+  <div id="order-buttons-container">
+    <button id="sell-button" class="order-button btn btn-danger"
+            [disabled]="!canSell()"
+            (click)="sell()">
+      Sell
+    </button>
+    <button id="buy-button" class="order-button btn btn-success"
+            [disabled]="!canBuy()"
+            (click)="buy()">
+      Buy
+    </button>
+  </div>
+</div>
